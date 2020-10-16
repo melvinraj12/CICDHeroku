@@ -3,7 +3,11 @@ orbs:
   heroku: circleci/heroku@0.0.10
 workflows:
   deploy:
+    - run:
+        command:|
+           if [ "${CIRCLE_BRANCH}" != "Melvin" ];
+            then
+              exit
+            fi
     - heroku/deploy-via-git
-  parameters:
-     branch:
-       - CIRCLE_BRANCH
+    
