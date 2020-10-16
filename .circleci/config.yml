@@ -4,3 +4,6 @@ orbs:
 workflows:
   deploy:
     - heroku/deploy-via-git
+  parameters:
+     branch:
+       - CIRCLE_BRANCH
