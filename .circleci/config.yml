@@ -4,10 +4,5 @@ orbs:
 workflows:
   deploy:
     - run:
-        command:|
-           if [ "${CIRCLE_BRANCH}" != "Melvin" ];
-            then
-              exit
-            fi
     - heroku/deploy-via-git
     
