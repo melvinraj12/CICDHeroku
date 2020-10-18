@@ -4,5 +4,5 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
-      - echo "$CIRCLE_BRANCH"
+      - run: echo "$CIRCLE_BRANCH"
       - heroku/deploy-via-git:
