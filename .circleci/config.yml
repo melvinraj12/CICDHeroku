@@ -4,5 +4,3 @@ orbs:
 workflows:
     jobs:
       - heroku/deploy-via-git:
-          force: true
-          branch: Staging
