@@ -5,8 +5,7 @@ workflows:
   heroku_deploy:
     jobs:
       - heroku/deploy-via-git
-      - parameters:
-          branch:
-            filters:
-              only:
-                - Staging
+          - branch:
+              filters:
+                only:
+                  - Staging
