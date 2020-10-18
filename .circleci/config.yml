@@ -4,4 +4,8 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
+      - build:
+          filters:
+            branches:
+              only: Staging
       - heroku/deploy-via-git
