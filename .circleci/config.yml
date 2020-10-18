@@ -3,5 +3,4 @@ orbs:
   heroku: circleci/heroku@0.0.10
 workflows:
    jobs:
-     - heroku/deploy-via-git:
-         branch: Staging
+     - heroku/deploy-via-git
