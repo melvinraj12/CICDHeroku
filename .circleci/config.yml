@@ -3,8 +3,16 @@ orbs:
   heroku: circleci/heroku@0.0.10
 workflows:
   heroku_deploy:
+<<<<<<< HEAD
     jobs:
       - heroku/deploy-via-git:
           filters:
             branches:
               only: Staging       
+=======
+    when:
+        or:
+          - equal: [ staging, << pipeline.git.branch >> ]
+    jobs:
+      - heroku/deploy-via-git    
+>>>>>>> ca364167159c3ba56458095f01ebef7ab5abb1e7
