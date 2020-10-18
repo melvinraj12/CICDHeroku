@@ -5,4 +5,8 @@ workflows:
   heroku_deploy:
     jobs:
       - heroku/deploy-via-git
-      webhook: ${CIRCLE_BRANCH}
+          parameters:
+            branch:
+              filters:
+                only:
+                  - Staging
