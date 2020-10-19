@@ -12,16 +12,16 @@ workflows:
         branch:
           default: $CIRCLE_BRANCH
           type: string
-  	force:
-    	  default: false
-    	  type: boolean
-  	maintenance-mode:
-    	  default: false
-    	  type: boolean
-  	no_output_timeout:
-    	  default: 10m
-    	  type: string
-  	tag:
+        force:
+          default: false
+          type: boolean
+        maintenance-mode:
+          default: false
+          type: boolean
+        no_output_timeout:
+          default: 10m
+          type: string
+        tag:
     	  default: $CIRCLE_TAG
     	  type: string
       steps:
