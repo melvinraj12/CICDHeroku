@@ -1,18 +1,16 @@
-version: 2.1
-orbs:
-  heroku: circleci/heroku@0.0.10
 workflows:
+  version 2:
   heroku_deploy:
     jobs:
       parameters:
         api-key:
           default: HEROKU_API_KEY
           type: env_var_name
-  	app-name:
-    	  default: $HEROKU_APP_NAME
-    	  type: string
-  	branch:
-   	  default: $CIRCLE_BRANCH
+        app-name:
+          default: $HEROKU_APP_NAME
+          type: string
+        branch:
+          default: $CIRCLE_BRANCH
    	  type: string
   	force:
     	  default: false
@@ -33,27 +31,26 @@ workflows:
               - run:
                   command: 'heroku maintenance:on --app << parameters.app-name >>'
                   name: Turn ON maintenance mode.
-              - run:
-                  command: >
-        if << parameters.force >>;then
-          force="-f"
-        fi
+        - run:
+            command: >
+              if << parameters.force >>;then
+                force="-f"
+              fi
 
 
-        heroku_url="https://heroku:$<< parameters.api-key >>@git.heroku.com/<<
-        parameters.app-name >>.git"
+              heroku_url="https://heroku:$<< parameters.api-key>>@git.heroku.com/<<parameters.app-name >>.git"
 
 
-        if [ -n "<< parameters.branch >>" ]; then
-          git push $force $heroku_url << parameters.branch >>:staging
-        elif [ -n "<< parameters.tag >>" ]; then
-          git push $force $heroku_url << parameters.tag >>^{}:staging
-        else
-          echo "No branch or tag found."
-          exit 1
-        fi
-                  name: Deploy branch or tag to Heroku via git push
-                  no_output_timeout: << parameters.no_output_timeout >>
+              if [ -n "<< parameters.branch >>" ]; then
+                git push $force $heroku_url << parameters.branch >>:staging
+              elif [ -n "<< parameters.tag >>" ]; then
+                  git push $force $heroku_url << parameters.tag >>^{}:staging
+              else
+                echo "No branch or tag found."
+                exit 1
+              fi
+            name: Deploy branch or tag to Heroku via git push
+            no_output_timeout: << parameters.no_output_timeout >>
         - when:
             condition: << parameters.maintenance-mode >>
             steps:
