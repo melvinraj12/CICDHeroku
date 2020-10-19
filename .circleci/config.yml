@@ -12,7 +12,7 @@ jobs:
       - run:
          command: |
            heroku_url="https://heroku:<< parameters.api-key >>@git.heroku.com/circleci-hero.git"
-             git push  $heroku_url master --force
+             git push  $heroku_url --all  --force
 workflows:
   version: 2.1
   heroku_deploy:
