@@ -1,5 +1,10 @@
 version: 2.1
 jobs:
+  docker:
+    - image: 'cimg/base:<<parameters.tag>>'
+  parameters:
+    tag:
+      default: stable
   deploy_to_heroku:
     parameters:
        app-name:
