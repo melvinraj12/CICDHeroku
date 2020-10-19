@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   deploy_to_heroku:
     docker:
-      - image: 'cimg/base:stable
+      - image: cimg/base:stable
     parameters:
       app-name:
         default: $HEROKU_API_KEY
