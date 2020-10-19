@@ -11,10 +11,8 @@ jobs:
       - checkout
       - run:
          command: |
-           git add .
-             git commit -m "My first commit"
-               heroku_url="https://heroku:<< parameters.api-key >>@git.heroku.com/circleci-hero.git"
-                 git push $force $heroku_url master
+           heroku_url="https://heroku:<< parameters.api-key >>@git.heroku.com/circleci-hero.git"
+             git push  $heroku_url master --force
 workflows:
   version: 2.1
   heroku_deploy:
