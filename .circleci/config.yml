@@ -7,20 +7,11 @@ jobs:
       api-key:
         default: $HEROKU_API_KEY
         type: string
-      branch:
-        default: $CIRCLE_BRANCH
-        type: string
     steps:
       - run:
          command: |
            heroku_url="https://heroku:<< parameters.api-key >>@git.heroku.com/circleci-hero.git"
-
-           if [ -n "<< parameters.branch >>" ]; then
-             git push $force $heroku_url << parameters.branch >>:master
-           else
-             echo "No branch."
-             exit 1
-           fi 
+             git push $force $heroku_url master
 workflows:
   version: 2.1
   heroku_deploy:
