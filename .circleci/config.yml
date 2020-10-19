@@ -1,7 +1,20 @@
 version: 2.1
-orbs:
-  heroku: circleci/heroku@0.0.10
+jobs:
+  deploy_to_heroku:
+    docker:
+      - image: cimg/base:stable
+    parameters:
+      api-key:
+        default: $HEROKU_API_KEY
+        type: string
+    steps:
+      - checkout
+      - run:
+         command: |
+           heroku_url="https://heroku:<< parameters.api-key >>@git.heroku.com/circleci-hero.git"
+             git push  $heroku_url Staging --force
 workflows:
+  version: 2.1
   heroku_deploy:
     jobs:
       - heroku/deploy-via-git:
