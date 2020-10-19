@@ -6,7 +6,7 @@ jobs:
     parameters:
       api-key:
         default: $HEROKU_API_KEY
-        type: env_var_name
+        type: string
       branch:
         default: $CIRCLE_BRANCH
         type: string
