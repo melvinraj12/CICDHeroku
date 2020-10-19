@@ -4,23 +4,23 @@ jobs:
     docker:
       - image: 'cimg/base:<<parameters.tag>>'
     parameters:
-       app-name:
-         default: $HEROKU_API_KEY
-       branch:
-         default: $CIRCLE_BRANCH
-       tag:
-         default: stable
-  steps:
-    - run:
-        command: |
-          heroku_url="https://heroku:circleci-hero@git.heroku.com/<< parameters.app-name >>.git"
+      app-name:
+        default: $HEROKU_API_KEY
+      branch:
+        default: $CIRCLE_BRANCH
+      tag:
+        default: stable
+    steps:
+      - run:
+         command: |
+           heroku_url="https://heroku:circleci-hero@git.heroku.com/<< parameters.app-name >>.git"
 
-          if [ -n "<< parameters.branch >>" ]; then
-            git push $force $heroku_url << parameters.branch >>:master
-          else
-            echo "No branch."
-            exit 1
-          fi 
+           if [ -n "<< parameters.branch >>" ]; then
+             git push $force $heroku_url << parameters.branch >>:master
+           else
+             echo "No branch."
+             exit 1
+           fi 
 workflows:
   version: 2.1
   heroku_deploy:
