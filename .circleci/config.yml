@@ -16,4 +16,5 @@ workflows:
   version: 2.1
   heroku_deploy:
     jobs:
+      - checkout
       - deploy_to_heroku
