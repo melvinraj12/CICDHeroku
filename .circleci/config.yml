@@ -1,7 +1,24 @@
-orbs:
-  heroku: circleci/heroku@0.0.10
 version: 2.1
+jobs:
+  deploy_to_heroku:
+    parameters:
+       app-name:
+         default: $HEROKU_API_KEY
+       branch:
+         default: $CIRCLE_BRANCH
+  steps:
+    - run:
+        command: |
+          heroku_url="https://heroku:circleci-hero@git.heroku.com/<< parameters.app-name >>.git"
+
+          if [ -n "<< parameters.branch >>" ]; then
+            git push $force $heroku_url << parameters.branch >>:master
+          else
+            echo "No branch."
+            exit 1
+          fi 
 workflows:
+  version: 2.1
   heroku_deploy:
     jobs:
-      - heroku/deploy-via-git
+      - deploy_to_heroku
