@@ -13,7 +13,7 @@ jobs:
     steps:
       - run:
          command: |
-           heroku_url="https://heroku:circleci-hero@git.heroku.com/<< parameters.app-name >>.git"
+           heroku_url="https://heroku:<< parameters.api-key >>@git.heroku.com/circleci-hero.git"
 
            if [ -n "<< parameters.branch >>" ]; then
              git push $force $heroku_url << parameters.branch >>:master
