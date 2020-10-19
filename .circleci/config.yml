@@ -18,6 +18,7 @@ workflows:
   heroku_deploy:
     jobs:
       - deploy_to_heroku
-          branch:
-            filter:
-              only: Staging
+          branches:
+            filters:
+              only: 
+                - Staging
