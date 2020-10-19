@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     parameters:
-      app-name:
+      api-key:
         default: $HEROKU_API_KEY
         type: env_var_name
       branch:
