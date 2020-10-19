@@ -22,8 +22,8 @@ workflows:
           default: 10m
           type: string
         tag:
-    	  default: $CIRCLE_TAG
-    	  type: string
+          default: $CIRCLE_TAG
+          type: string
       steps:
         - when:
             condition: << parameters.maintenance-mode >>
