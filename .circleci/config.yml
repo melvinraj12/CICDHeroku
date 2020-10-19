@@ -2,14 +2,14 @@ version: 2.1
 jobs:
   deploy_to_heroku:
     docker:
-      - image: 'cimg/base:<<parameters.tag>>'
+      - image: 'cimg/base:stable
     parameters:
       app-name:
         default: $HEROKU_API_KEY
+        type: env_var_name
       branch:
         default: $CIRCLE_BRANCH
-      tag:
-        default: stable
+        type: string
     steps:
       - run:
          command: |
