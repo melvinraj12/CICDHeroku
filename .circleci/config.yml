@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  deploy_to_heroku:
+  deploy_melvin:
     docker:
       - image: cimg/base:stable
     parameters:
@@ -15,9 +15,9 @@ jobs:
              git push  $heroku_url HEAD:master --force
 workflows:
   version: 2.1
-  heroku_deploy:
+  heroku_deploy_melvin:
     jobs:
-      - deploy_to_heroku:
+      - deploy_melvin:
           filters:
             branches:
               only: 
