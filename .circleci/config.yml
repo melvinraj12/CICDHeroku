@@ -20,5 +20,7 @@ workflows:
       - deploy_melvin:
           filters:
             branches:
-              only: 
+              only:
                 - Staging
+
+
